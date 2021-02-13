@@ -1,35 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Card from './Card'
+import React from 'react';
+import Form from './Form';
 
-
-function App() {
-    const [users, setUser] = useState({});
-    const [name, setName] = useState('');
-
-    useEffect(() => {
-        getProfilegithub()
-    }, []);
-    async function getProfilegithub() {
-        const api = await fetch(`https://api.github.com/users/${name}`);
-        const data = await api.json()
-        setUser(data);
-    }
-    function handelSubmit(event) {
-        event.preventDefault();
-        getProfilegithub();
-        setName('');
-    }
+export default function App() {
     return (
         <>
-            <div className="container form">
-                <Card data={users} />
-                <form onSubmit={handelSubmit}>
-                    
-                </form>
-
+            <div className="main">
+                <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Github Profile Finder</h3>
+                <Form />
             </div>
         </>
     )
 }
-
-export default App();
